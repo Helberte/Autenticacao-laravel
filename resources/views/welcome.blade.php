@@ -19,35 +19,47 @@
 <body>
     <div class='box-login'>
         <h2>Conecte-se</h2>
-
+        @if(session('status'))
+            <p>{{ session('status') }}</p>
+        @endif
+        
         <form action="{{ route('login') }}" method='POST'>
         @csrf
+            @error('user_nao_encontrado')
+                <p>{{ $message }}</p>
+            @enderror
             <!-- email -->
             <div class='txt-login txt-login-1'>
                 <div>
                     <span><ion-icon class='icon' name="mail-outline"></ion-icon></span>
                 </div>
-                <input class='txt-email' autofocus type="text" name="email" placeholder='Insira seu email' maxLength="500"/>
+                <input class="txt-email @error('email') is-invalid @enderror" autofocus type="text" name="email" placeholder='Insira seu email' maxLength="500" value="{{ old('email') }}" autocomplete="on"/>
             </div>
+            @error('email')
+                <p>{{ $message }}</p>
+            @enderror
 
             <!-- senha -->
             <div class='txt-login txt-login-2'>
                 <div>
                     <span><ion-icon class='icon' name="lock-closed-outline"></ion-icon></span>
                 </div>
-                <input class='txt-password' type="password" name="password" placeholder='Insira sua senha' maxLength="500"/>
+                <input class="txt-password @error('password') is-invalid @enderror" type="password" name="password" placeholder='Insira sua senha' maxLength="500" autocomplete="off"/>
                 <span class='eye-password'><ion-icon name="eye-outline"></ion-icon></span>
             </div>
+            @error('password')
+                <p>{{ $message }}</p>
+            @enderror
 
-            <!-- CONTINUAR https://laravel.com/docs/9.x/validation -->
-            
-            @if($errors->any())
+            <!-- DOCUMENTAÇÃO https://laravel.com/docs/9.x/validation -->            
+            <!-- verifica se tem erro, se tiver, pega todos os erros em um array -->
+            <!-- @if($errors->any())
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-            @endif
+            @endif -->
 
             <button class='forgot-password'>Não consegue fazer login?</button>
 

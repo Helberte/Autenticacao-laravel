@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 
 class Autenticacao extends Controller
 {
@@ -25,15 +27,29 @@ class Autenticacao extends Controller
         // caso exista, retornará true
 
             $request->session()->regenerate();
-            //Uma sessão autenticada será iniciada para o usuário
+            // Uma sessão autenticada será iniciada para o usuário
 
-            return view('home');
+            // a tabela do banco e os campos são pegados automaticamente a partir do arquivo
+            // config/auth.php
+
+            // return redirect('/home');
+            // redirecionando para a rota /home
+
+            //redirecionando para rota nomeada comparametro
+            //return redirect()->route('paginahome', ['id' => 1]);
+
+            //redirecionando para rota nomeada sem comparametro
+            return redirect()->route('paginahome');
 
         }
 
+        // redireciona o usuário para a página anterior
         return back()->withErrors([
-            'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-        ])->onlyInput('email');
+            'user_nao_encontrado' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+        ])->withInput(); // permite salvar os dados que estavam antes, que o usuário tinha preenchido
+
+        // documentação, redirecionamento
+        // https://laravel.com/docs/9.x/redirects
     }
     public function home(){
         return view('home');
@@ -50,6 +66,6 @@ class Autenticacao extends Controller
         $usuario->password = Hash::make($request->password);
 
         $usuario->save();
-        return view('welcome');
+        return redirect()->route('homelogin')->with('status','Conta criada com sucesso.');
     }
 }

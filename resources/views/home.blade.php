@@ -8,5 +8,9 @@
 </head>
 <body>
   <h1>Você entrou no sistema</h1>
+
+  @auth
+    <h2>Eu estou autenticado</h2>
+  @endauth
 </body>
 </html>
