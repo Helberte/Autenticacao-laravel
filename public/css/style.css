@@ -1,0 +1,152 @@
+/* @import url('https://fonts.googleapis.com/css2? family= Roboto:wght@400;700 & display=swap'); */
+
+*{
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color: #BBFCFF;
+  min-height: 550px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-login{
+  height: 500px;
+  width: 450px;
+  margin: auto;
+ 
+  background-color: #FFFF;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 55px;
+}
+.box-login h2{
+  color: #293E52;
+  font-weight: 500;
+}
+.box-login form{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box-login form .txt-login{
+  border: solid 1px #CED4DA;
+  border-radius: 3px;
+  width: 100%;
+  height: 54px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.box-login form .txt-login div{
+  height: 100%;
+  width: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #BBFCFF;
+}
+.box-login form .txt-login div span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #07AFB6;
+}
+.box-login form .txt-login input{
+  height: 100%;
+  width: 100%;
+  border: none;
+  padding-left: 14px;
+  font-size: 15px;
+  color: #293E52;
+  outline: 0;
+}
+.box-login form .txt-login .eye-password{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  right: 10px;
+  color: #07AFB6;
+  font-size: 20px;
+}
+.box-login form .txt-login-1{
+  margin: 70px 0 23px;
+}
+.box-login form .txt-login-email{
+  margin-bottom: 23px;
+}
+.box-login form .forgot-password{
+  border: none;
+  background-color: transparent;
+  color: #007BA5;
+  cursor: pointer;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.box-login form .button-submit{
+  width: 100%;
+  margin-top: 30px;
+  height: 50px;
+  border: none;
+  background-color: #007BA5;
+  color: #FFFF;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: all .2s ease-in-out;
+}
+
+.box-login form .button-submit:hover{
+  font-size: 17px;
+}
+.box-login form .create-accout{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-top: 15px;
+  font-size: 13px;
+}
+.box-login form .create-accout button{
+  border: none;
+  color: #007BA5;
+  background-color: transparent;
+  cursor: pointer;
+}
+.box-login form .create-accout button:hover{
+  text-decoration: underline;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 600px){
+  .box-login{
+    width: 95%;
+  }
+}
+@media(max-width: 340px){
+  .box-login{
+    padding: 18px 15px;
+  }
+  body{
+    height: auto;
+  }
+}

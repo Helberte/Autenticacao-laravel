@@ -18,16 +18,23 @@
 </head>
 <body>
     <div class='box-login'>
-        <h2>Conecte-se</h2>
+        <h2>Crie sua conta</h2>
 
-        <form action="{{ route('login') }}" method='POST'>
+        <form action="{{ route('registerUser') }}" method='POST'>
         @csrf
-            <!-- email -->
+            <!-- nome -->
             <div class='txt-login txt-login-1'>
                 <div>
                     <span><ion-icon class='icon' name="mail-outline"></ion-icon></span>
                 </div>
-                <input class='txt-email' autofocus type="text" name="email" placeholder='Insira seu email' maxLength="500"/>
+                <input class='txt-email' required autofocus type="text" name="nome" placeholder='Insira seu nome' maxLength="500"/>
+            </div>
+
+            <div class='txt-login txt-login-email'>
+                <div>
+                    <span><ion-icon class='icon' name="mail-outline"></ion-icon></span>
+                </div>
+                <input class='txt-email' required autofocus type="text" name="email" placeholder='Insira seu email' maxLength="500"/>
             </div>
 
             <!-- senha -->
@@ -35,20 +42,12 @@
                 <div>
                     <span><ion-icon class='icon' name="lock-closed-outline"></ion-icon></span>
                 </div>
-                <input class='txt-password' type="password" name="password" placeholder='Insira sua senha' maxLength="500"/>
+                <input class='txt-password' type="password" required name="password" placeholder='Insira sua senha' maxLength="500"/>
                 <span class='eye-password'><ion-icon name="eye-outline"></ion-icon></span>
             </div>
 
-            <button class='forgot-password'>Não consegue fazer login?</button>
-
-            <input class='button-submit' type="submit" value="Conecte-se" />
-
-            <div class='create-accout'>
-                <p>Não tem uma conta?</p>
-
-                <button><a href="/register">Crie</a></button>
-                
-            </div>        
+          
+            <input class='button-submit' type="submit" value="Cadastrar" />                 
         </form>
     </div>
 </body>
