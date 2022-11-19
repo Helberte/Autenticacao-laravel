@@ -39,6 +39,16 @@
                 <span class='eye-password'><ion-icon name="eye-outline"></ion-icon></span>
             </div>
 
+            <!-- CONTINUAR https://laravel.com/docs/9.x/validation -->
+            
+            @if($errors->any())
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+
             <button class='forgot-password'>Não consegue fazer login?</button>
 
             <input class='button-submit' type="submit" value="Conecte-se" />
