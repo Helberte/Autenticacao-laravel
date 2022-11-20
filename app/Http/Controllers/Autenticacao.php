@@ -15,7 +15,8 @@ class Autenticacao extends Controller
         return view('welcome');
     }
 
-    public function authUser(Request $request){
+    public function authUser(Request $request){    
+
         $credenciais = $request->validate([
             'email' => ['required', 'email:rfc,dns'],
             'password' => ['required','min:8']
@@ -23,7 +24,7 @@ class Autenticacao extends Controller
         //https://laravel.com/docs/9.x/validation#rule-min
         // documentação, este metodo validade valida as colunas de acordo com a regra passada por array
 
-        if(Auth::attempt($credenciais)){ // verifica na tabela do banco de dados se existe este email e esta senha
+        if(Auth::attempt($credenciais, $request->lembrar)){ // verifica na tabela do banco de dados se existe este email e esta senha
         // caso exista, retornará true
 
             $request->session()->regenerate();
@@ -35,12 +36,12 @@ class Autenticacao extends Controller
             // return redirect('/home');
             // redirecionando para a rota /home
 
-            //redirecionando para rota nomeada comparametro
+            //redirecionando para rota nomeada com parametro
             //return redirect()->route('paginahome', ['id' => 1]);
 
-            //redirecionando para rota nomeada sem comparametro
+            //redirecionando para rota nomeada sem parametro
+            //return redirect()->intended('/home');
             return redirect()->route('paginahome');
-
         }
 
         // redireciona o usuário para a página anterior
@@ -67,5 +68,13 @@ class Autenticacao extends Controller
 
         $usuario->save();
         return redirect()->route('homelogin')->with('status','Conta criada com sucesso.');
+    }
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('homelogin');
     }
 }

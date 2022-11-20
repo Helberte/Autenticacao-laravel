@@ -51,6 +51,11 @@
                 <p>{{ $message }}</p>
             @enderror
 
+            <div class="check-lembrar">
+                <input type="checkbox" name="lembrar" class="lembrar" id="lembrar">
+                <label for="lembrar">Lembrar-se de mim</label>
+            </div>            
+
             <!-- DOCUMENTAÇÃO https://laravel.com/docs/9.x/validation -->            
             <!-- verifica se tem erro, se tiver, pega todos os erros em um array -->
             <!-- @if($errors->any())

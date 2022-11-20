@@ -11,11 +11,14 @@ Route::get('/home', [Autenticacao::class, 'home'])->middleware('auth')->name('pa
 Route::get('/register', [Autenticacao::class, 'register'])->name('register');
 Route::post('/registro', [Autenticacao::class, 'createUser'])->name('registerUser');
 
+Route::get('/logout', [Autenticacao::class, 'logout'])->name('sair');
+
 // Parte de middleware - OK
 // Parte de verificação do email
 // Parte de sessão
 // https://laravel.com/docs/9.x/session
 
-// Parte de lembrar do usuário
+// Parte de lembrar do usuário - OK
+// Parte de Logout - OK
 // redefinição de senha
 // https://laravel.com/docs/9.x/authentication#login-throttling

@@ -11,6 +11,9 @@
 
   @auth
     <h2>Eu estou autenticado</h2>
+    
+    <a href="{{ route('sair') }}">Sair</a>
+    
   @endauth
 </body>
 </html>
