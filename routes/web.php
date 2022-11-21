@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Autenticacao;
 
 
-
 Route::get('/', [Autenticacao::class, 'index'])->name('homelogin');
 Route::post('/login', [Autenticacao::class, 'authUser'])->name('login');
 Route::get('/home', [Autenticacao::class, 'home'])->middleware('auth')->name('paginahome');
 Route::get('/register', [Autenticacao::class, 'register'])->name('register');
 Route::post('/registro', [Autenticacao::class, 'createUser'])->name('registerUser');
-
 Route::get('/logout', [Autenticacao::class, 'logout'])->name('sair');
+
+Route::get('/esquecisenha', [Autenticacao::class, 'forgotPassword'])->middleware('guest')->name('forgotPassword');
+Route::post('/enviaremail', [Autenticacao::class, 'emailenvio'])->name('emailenvio');
 
 // Parte de middleware - OK
 // Parte de verificação do email

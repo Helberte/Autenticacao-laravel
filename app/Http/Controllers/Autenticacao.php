@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events;
 use App\Models\User;
@@ -76,5 +77,20 @@ class Autenticacao extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('homelogin');
+    }
+
+    public function forgotPassword(){
+        return view('forgotPassword');
+    }
+    public function emailenvio(Request $request){
+        $request->validate(['email' => ['email', 'required']]);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+        dd('teste');
+        return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['email' => __($status)]);
     }
 }

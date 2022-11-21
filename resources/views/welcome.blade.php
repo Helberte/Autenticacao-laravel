@@ -33,7 +33,7 @@
                 <div>
                     <span><ion-icon class='icon' name="mail-outline"></ion-icon></span>
                 </div>
-                <input class="txt-email @error('email') is-invalid @enderror" autofocus type="text" name="email" placeholder='Insira seu email' maxLength="500" value="{{ old('email') }}" autocomplete="on"/>
+                <input class="txt-email @error('email') is-invalid @enderror" autofocus type="text" name="email" placeholder='Insira seu email' required maxLength="500" value="{{ old('email') }}" autocomplete="on"/>
             </div>
             @error('email')
                 <p>{{ $message }}</p>
@@ -44,7 +44,7 @@
                 <div>
                     <span><ion-icon class='icon' name="lock-closed-outline"></ion-icon></span>
                 </div>
-                <input class="txt-password @error('password') is-invalid @enderror" type="password" name="password" placeholder='Insira sua senha' maxLength="500" autocomplete="off"/>
+                <input class="txt-password @error('password') is-invalid @enderror" type="password" name="password" placeholder='Insira sua senha' required maxLength="500" autocomplete="off"/>
                 <span class='eye-password'><ion-icon name="eye-outline"></ion-icon></span>
             </div>
             @error('password')
@@ -66,7 +66,7 @@
                 </ul>
             @endif -->
 
-            <button class='forgot-password'>Não consegue fazer login?</button>
+            <button class='forgot-password'><a href="{{ route('forgotPassword') }}">Não consegue fazer login?</a></button>
 
             <input class='button-submit' type="submit" value="Conecte-se" />
 
