@@ -14,6 +14,9 @@ Route::get('/logout', [Autenticacao::class, 'logout'])->name('sair');
 Route::get('/esquecisenha', [Autenticacao::class, 'forgotPassword'])->middleware('guest')->name('forgotPassword');
 Route::post('/enviaremail', [Autenticacao::class, 'emailenvio'])->name('emailenvio');
 
+Route::get('/envia_email', function(){
+  return new App\Mail\OrderShipped();
+});
 // Parte de middleware - OK
 // Parte de verificação do email
 // Parte de sessão
